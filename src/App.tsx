@@ -1,3 +1,14 @@
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { Router } from '~/routes/routes';
+import { GlobalStyle } from './styles/global';
+
 export function App() {
-  return <div>Teste</div>;
+  const queryClient = new QueryClient();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <GlobalStyle />
+      <Router />
+    </QueryClientProvider>
+  );
 }
