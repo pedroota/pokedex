@@ -1,9 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import { Badge } from '~/components/Badge';
 import { ButtonGroup } from '~/components/ButtonGroup';
+import { usePokemonCaptureChances } from '~/hooks/usePokemonCaptureChances';
 import { Pokemon } from '~/interfaces/pokemon.interface';
-import { BpdyInfoDetails, Container, HeaderInfoDetails, ListItem } from './styles';
+import { BodyInfoDetails, Container, HeaderInfoDetails, ListItem, CatchPokemonButton, ButtonNavigate } from './styles';
 
 export function InfoDetails({ name, weight, types, abilities, height, stats }: Pokemon) {
+  const navigate = useNavigate();
+  const { chancesCapture } = usePokemonCaptureChances({ stats });
+
+  const goBackHomePage = () => navigate('/');
+
   return (
     <Container>
       <HeaderInfoDetails>
@@ -17,7 +24,7 @@ export function InfoDetails({ name, weight, types, abilities, height, stats }: P
         </ButtonGroup>
       </HeaderInfoDetails>
 
-      <BpdyInfoDetails>
+      <BodyInfoDetails>
         <ButtonGroup>
           <Badge>
             <p>{weight}Kg</p>
@@ -40,7 +47,13 @@ export function InfoDetails({ name, weight, types, abilities, height, stats }: P
             <ListItem key={ability.ability.name}>{ability.ability.name}</ListItem>
           ))}
         </ul>
-      </BpdyInfoDetails>
+
+        <h3>Catch Pokemon</h3>
+        <CatchPokemonButton>
+          Catch Pokemon <span>{chancesCapture.toFixed(2)}%</span>
+        </CatchPokemonButton>
+        <ButtonNavigate onClick={goBackHomePage}>Go back</ButtonNavigate>
+      </BodyInfoDetails>
     </Container>
   );
 }

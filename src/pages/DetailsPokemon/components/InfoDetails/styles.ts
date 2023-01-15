@@ -21,7 +21,7 @@ export const HeaderInfoDetails = styled.div`
   }
 `;
 
-export const BpdyInfoDetails = styled.div`
+export const BodyInfoDetails = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
@@ -33,4 +33,24 @@ export const ListItem = styled.li`
   & + li {
     margin-top: 0.5rem;
   }
+`;
+
+export const CatchPokemonButton = styled.button`
+  all: unset;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  background-color: #374151;
+  color: white;
+
+  > span {
+    font-weight: 600;
+  }
+`;
+
+export const ButtonNavigate = styled.button`
+  all: unset;
+  color: gray;
+  font-weight: 600;
+  text-align: center;
 `;
