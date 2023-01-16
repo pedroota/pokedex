@@ -19,6 +19,7 @@ export function DetailsPokemon() {
         abilities={data?.data.abilities}
         height={data?.data.height}
         stats={data?.data.stats}
+        image={data?.data.sprites.front_default}
       />
     </Container>
   );

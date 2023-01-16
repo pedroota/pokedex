@@ -24,4 +24,5 @@ export interface Pokemon {
       };
     }
   ];
+  image: string;
 }
